@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AuditSkills Platform</title>
+<link rel="stylesheet" href="/css/app.css"/>
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="brand-icon">⚡</span>
+      <div>
+        <div class="brand-name">AuditSkills</div>
+        <div class="brand-tagline">Audit Skill Registry</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Platform</div>
+      <a class="nav-item" href="#/dashboard"  data-route="dashboard">  <span>🏠</span> Dashboard</a>
+      <a class="nav-item" href="#/registry"   data-route="registry">   <span>📚</span> Skill Registry <span class="nav-badge" id="badge-skills">—</span></a>
+      <div class="nav-section">My Work</div>
+      <a class="nav-item" href="#/builder"    data-route="builder">    <span>🔧</span> Skill Builder</a>
+      <a class="nav-item" href="#/runs"       data-route="runs">       <span>▶</span>  Audit Runs <span class="nav-badge" id="badge-runs">—</span></a>
+      <a class="nav-item" href="#/findings"   data-route="findings">   <span>🔍</span> Findings <span class="nav-badge danger" id="badge-findings">—</span></a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="user-avatar">JS</div>
+      <div>
+        <div class="user-name">Jane Smith</div>
+        <div class="user-role">Senior Internal Auditor</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main content ── -->
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-title" id="topbar-title">Dashboard</div>
+      <div class="topbar-actions">
+        <div class="search-box">
+          <span>🔍</span>
+          <input type="text" id="global-search" placeholder="Search skills, runs…" autocomplete="off"/>
+        </div>
+        <button class="btn btn-primary" onclick="Router.go('/builder')">+ New Skill</button>
+      </div>
+    </header>
+
+    <main id="view-container"></main>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<!-- Modal container -->
+<div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
+  <div id="modal-box" class="modal-box"></div>
+</div>
+
+<script src="/js/api.js"></script>
+<script src="/js/views/dashboard.js"></script>
+<script src="/js/views/registry.js"></script>
+<script src="/js/views/builder.js"></script>
+<script src="/js/views/runs.js"></script>
+<script src="/js/views/findings.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
