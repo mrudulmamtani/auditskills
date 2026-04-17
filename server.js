@@ -36,16 +36,18 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// ── Start ─────────────────────────────────────────────────────────────────────
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`\n  ⚡ AuditSkills Platform running at http://localhost:${PORT}\n`);
-  console.log(`  Routes:`);
-  console.log(`    GET  /                    → Web app`);
-  console.log(`    GET  /api/skills          → List all skills`);
-  console.log(`    POST /api/runs            → Start audit run (multipart: dataFile + skillId)`);
-  console.log(`    GET  /api/runs/:id/export/excel  → Download working paper`);
-  console.log(`    GET  /api/runs/:id/export/pdf    → Download findings report\n`);
-});
+// ── Start (local only — Vercel uses the exported app directly) ───────────────
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`\n  ⚡ AuditSkills Platform running at http://localhost:${PORT}\n`);
+    console.log(`  Routes:`);
+    console.log(`    GET  /                    → Web app`);
+    console.log(`    GET  /api/skills          → List all skills`);
+    console.log(`    POST /api/runs            → Start audit run (multipart: dataFile + skillId)`);
+    console.log(`    GET  /api/runs/:id/export/excel  → Download working paper`);
+    console.log(`    GET  /api/runs/:id/export/pdf    → Download findings report\n`);
+  });
+}
 
 module.exports = app;
